@@ -1,4 +1,10 @@
 $(document).ready(function(){    
+  //mobile jumbotron height
+  if($(document).width() < 800){
+    var screenHeight = $(window).height();
+    $(".jumbotron").css("height", screenHeight + "px");
+  }
+
   //collapse navbar toggle
   $(".navbar-nav li a").click(function(event) {
     $(".navbar-collapse").collapse('hide');
