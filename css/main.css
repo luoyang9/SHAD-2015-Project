@@ -50,3 +50,8 @@ body{
 .jumbotron .container .btn {
 	text-shadow: none;
 }
+
+#loginText {
+	font-size: 15px ;
+	color: white;
+}

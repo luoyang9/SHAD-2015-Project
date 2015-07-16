@@ -3,19 +3,19 @@ $(document).ready(function(){
   if($(document).width() < 800){
     var screenHeight = $(window).height();
     $(".jumbotron").css("height", screenHeight + "px");
+
+    //collapse navbar toggle
+    $(".navbar-nav li a").click(function(event) {
+      $(".navbar-collapse").collapse('hide');
+    });
+    $(".navbar-toggle").blur(function(event) {
+      $(".navbar-collapse").collapse('hide');
+    });
   }
 
-  //collapse navbar toggle
-  $(".navbar-nav li a").click(function(event) {
-    $(".navbar-collapse").collapse('hide');
-  });
-  $(".navbar-toggle").blur(function(event) {
-    $(".navbar-collapse").collapse('hide');
-  });
 
   //smooth scroll
   $("a[href*=#]").click(function(){
-    console.log("click");
       $('html, body').animate({
           scrollTop: $( $.attr(this, 'href') ).offset().top
       }, 500);
