@@ -91,11 +91,11 @@
 				if(xmlhttp.readyState==4)
 				{
 					success = xmlhttp.responseText;	
-					if(success != 0)
+					if(success == 1)
 					{
-						document.getElementById("feedback").innerHTML = "Successfully logged in to " + success;
+						window.location.href = "../profile";
 					}
-					else
+					else if(success == 0)
 					{
 						alertMessage.innerHTML = "Something went wrong while logging in. Please try again later.";
 						contactAlert.style.visibility = "visible";

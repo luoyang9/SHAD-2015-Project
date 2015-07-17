@@ -1,4 +1,5 @@
 <?php
+	session_start();
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	    $username = $_POST["username"];
@@ -26,7 +27,10 @@
 	    while($row = $result->fetch_assoc()) {
 	       if($row["password"] === $hashpassword && $row["username"] === $username)
 	       {
-	       		echo $row["id"] . " - " . $row["firstname"] . " " . $row["lastname"];
+				$_SESSION['username'] = $row["username"];
+				$_SESSION['name'] = $row["firstname"] . " " . $row["lastname"];
+				$_SESSION['lastactivity'] = time();
+				echo 1;
 	       }
 	    }
 	}
