@@ -5,6 +5,8 @@
 	    $lname = test_input($_POST["lname"]);
 	    $email = test_input($_POST["email"]);
 	    $birthday = test_input($_POST["birthday"]);
+	    $year = test_input($_POST["year"]);
+	    $interests = test_input($_POST["interests"]);
 	    $username = $_POST["username"];
 	    $password = $_POST["password"];
 		
@@ -31,6 +33,8 @@
 	$lname = clean_string($lname);
 	$email = clean_string($email);
 	$birthday = clean_string($birthday);
+	$year = clean_string($year);
+	$interests = clean_string($interests);
 
 	//hashing and salting passwords
 	$salt = "temporarysalt";
@@ -56,10 +60,14 @@
 	    }
 	}
 
-	$data = "INSERT INTO Profiles (firstname, lastname, email, birthday, username, password)
-	VALUES ('$fname', '$lname', '$email', '$birthday', '$username', '$hashpassword')";
+	$data = "INSERT INTO Profiles (firstname, lastname, email, birthday, year, interests, username, password)
+	VALUES ('$fname', '$lname', '$email', '$birthday', '$year', '$interests', '$username', '$hashpassword')";
 
 	if ($conn->query($data) === TRUE) {
+		session_start();
+		$_SESSION['username'] = $username;
+		$_SESSION['name'] = $fname . " " . $lname;
+		$_SESSION['lastactivity'] = time();
 		echo 1;
 	} else {
 		echo 0;

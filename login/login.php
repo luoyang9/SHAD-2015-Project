@@ -31,11 +31,15 @@
 				$_SESSION['name'] = $row["firstname"] . " " . $row["lastname"];
 				$_SESSION['lastactivity'] = time();
 				echo 1;
+				die();
 	       }
 	    }
+	    echo 2;
+	    die();
 	}
 	else {
 		echo 0;
+		die();
 	}
 
 ?>

@@ -42,29 +42,30 @@
 			position: absolute;
 			bottom: 5px;
 		}
+
+		#signUpContainer {
+			text-align:center;
+		}
 	</style>
 
 	<script>
 		//form
-		function formSubmit(fname, lname, email, year, month, day, username, password)
+		function formSubmit(fname, lname, email, year, month, day, uniYear, interests, username, password)
 		{
 			
 			var alertMessage = document.getElementById("alertMessage");
 			var contactAlert = document.getElementById("contactAlert");
 			var darkBackground = document.getElementById("darkBackground");
+			var feedback = document.getElementById("feedback");
 			
-			if (fname == "" || lname == "" || email == "" || birthday == "" || username == "" || password == "")
+			if (fname == "" || lname == "" || email == "" || birthday == "" || username == "" || password == "" || year == "" || interests == "")
 			{
-				alertMessage.innerHTML = "Please fill out all fields";
-				contactAlert.style.visibility = "visible";
-				darkBackground.style.visibility = "visible";
+				feedback.innerHTML = "Please fill out all fields";
 				return;
 			}
 			if (!checkEmail(email))
 			{
-				alertMessage.innerHTML = "Your email is invalid";
-				contactAlert.style.visibility = "visible";
-				darkBackground.style.visibility = "visible";
+				feedback.innerHTML = "Your email is invalid";
 				return;
 			}
 			
@@ -104,7 +105,7 @@
 					success = xmlhttp.responseText;
 					if(success == 1)
 					{
-						window.location.href = "../profiles";
+						window.location.href = "../profile";
 					}
 					else if(success == 0)
 					{
@@ -113,9 +114,7 @@
 						darkBackground.style.visibility = "visible";
 					}
 					else if(success == 2){
-						alertMessage.innerHTML = "Username already exists. Please choose another one.";
-						contactAlert.style.visibility = "visible";
-						darkBackground.style.visibility = "visible";
+						feedback.innerHTML = "Username already exists. Please choose another one.";
 					}
 					else
 					{
@@ -127,7 +126,7 @@
 			var birthday = year + "-" + month + "-" + day;
 			xmlhttp.open("POST", "add.php", true);
 			xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xmlhttp.send("fname="+fname+"&lname="+lname+"&email="+email+"&birthday="+birthday+"&username="+username+"&password="+password);
+			xmlhttp.send("fname="+fname+"&lname="+lname+"&email="+email+"&birthday="+birthday+"&year="+uniYear+"&interests="+interests+"&username="+username+"&password="+password);
 		}
 
 		function checkEmail(email)
@@ -160,8 +159,20 @@
 	</script>
 </head>
 <body>
-	<a href="../">Go Back</a>
-	<div class="container">
+	<nav class="navbar navbar-default" id="mainNavBar" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="../"><div class="glyphicon glyphicon-cloud"></div> Ultra</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container" id="signUpContainer">
 		<div class="row">
 			<div class="col-md-12">
 				<h1>Create Profile</h1>
@@ -169,7 +180,7 @@
 		</div>
 		<div class="row">
 			<form name="addProfile" action="add.php" method="post">
-				<table border="1">
+				<table border="1" align="center">
 					<tr>
 						<td>Username</td>
 						<td><input type="text" name="username"/>
@@ -272,10 +283,35 @@
 							  	<option value="31">31</option>
 							</select>
 					</tr>
+					<tr>
+						<td>
+							University Year
+						</td>
+						<td>
+							<select name="uniYear">
+							  	<option value="1">First Year</option>
+							  	<option value="2">Second Year</option>
+							  	<option value="3">Third Year</option>
+							  	<option value="4">Fourth Year</option>
+							  	<option value="5">Fifth Year</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Excercise Interests (eg. basketball, running)<br/>
+							<span style="color:gray;">*Separate values with comma (,)</span>
+						<td>
+							<textarea name="interests"></textarea>
+						</td>
+					</tr>
 				</table>
-				<input type="button" value="Create" onClick="formSubmit(firstname.value, lastname.value, email.value, year.value, month.value, day.value, username.value, password.value)" />
+				<br/>
+				<input type="button" value="Create" onClick="formSubmit(firstname.value, lastname.value, email.value, year.value, month.value, day.value, uniYear.value, interests.value, username.value, password.value)" />
 			</form>
 		</div>
+		<p style="color:red;" id="feedback"></p>
+		<a href="../profiles">View All Profiles</a>
 	</div>
 	<div id="darkBackground">
 		<div id="contactAlert">
@@ -283,6 +319,5 @@
 			<button id="alertButton" onClick="closeAlert()">OK</button>
 		</div>
 	</div>
-	<a href="../profiles">View All Profiles</a>
 </body>
 </html>

@@ -36,10 +36,19 @@
 			<div class="navbar-collapse collapse" id="mainNav">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a id="nav-about" href="#about"><div class="glyphicon glyphicon-bookmark"></div> About</a></li>
-					<li><a href="profiles"><div class="glyphicon glyphicon-cutlery"></div> Profiles</a></li>
-					<li><a href="login"><div class="glyphicon glyphicon-phone"></div> Log in</a></li>
-					<li><a href="add"><div class="glyphicon glyphicon-camera"></div> Sign Up</a></li>
-					<li><a href="profile"><div class="glyphicon glyphicon-camera"></div> My Profile</a></li>
+
+					<?php 
+						session_start();
+						if(!isset($_SESSION['username']))
+						{
+							echo '<li><a href="login"><div class="glyphicon glyphicon-phone"></div> Log in</a></li><li><a href="add"><div class="glyphicon glyphicon-camera"></div> Sign Up</a></li>';
+						}
+						else{
+							echo '<li><a href="profiles"><div class="glyphicon glyphicon-cutlery"></div> Profiles</a></li><li><a href="profile"><div class="glyphicon glyphicon-camera"></div> My Profile</a></li><li><a href="javascript:logOut()"><div class="glyphicon glyphicon-camera"></div> Logout</a></li>';
+						}
+					?>
+
+
 					<li><a href="#contact"><div class="glyphicon glyphicon-earphone"></div> Contact</a></li>
 				</ul>
 			</div>

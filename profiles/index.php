@@ -11,21 +11,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
-	<a href="../">Go Back</a>
-	<div class="container" id="about">
+	<nav class="navbar navbar-default" id="mainNavBar" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="../"><div class="glyphicon glyphicon-cloud"></div> Ultra</a>
+			</div>
+		</div>
+	</nav>
+	<div class="container" id="profilesContainer">
 		<div class="row">
 			<div class="col-md-12">
 				<h1>Profiles</h1>
 			</div>
 		</div>
 		<div class="row">
-			<table style="width:100%;" border="1">
+			<table style="width:100%;" border="1" align="center">
 				<tr>
 					<th>ID</th>
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Email</th>
 					<th>Birthday</th>
+					<th>Uni Year</th>
+					<th>Interests</th>
 				</tr>
 
 				<?php
@@ -42,14 +56,16 @@
 					    die('<span style="color:red;">Connection failed: " . $conn->connect_error . "     " . $conn->connect_errno . " </span>');
 					} 
 
-					$allProfiles = "SELECT id, firstname, lastname, email, birthday FROM Profiles";
+					$allProfiles = "SELECT id, firstname, lastname, email, birthday, year, interests FROM Profiles";
 					$result = $conn->query($allProfiles);
 
 					if ($result->num_rows > 0) {
 					    // output data of each row;
 
 					    while($row = $result->fetch_assoc()) {
-					        echo "<tr><td>" . $row["id"]. "</td><td>" . $row["firstname"]. "</td><td>" . $row["lastname"] . "</td><td>". $row["email"] . "</td><td>" . $row["birthday"] . "</td></tr>";
+					        echo "<tr><td>" . $row["id"]. "</td><td>" . $row["firstname"]. "</td><td>" . $row["lastname"] . 
+					        "</td><td>". $row["email"] . "</td><td>" . $row["birthday"] . "</td><td>" . $row["year"] . "</td><td>" .
+					        $row["interests"] . "</td></tr>";
 					    }
 					} else {
 					    echo '<tr><td colspan="5" style="text-align:center;">0 results</td></tr>';
@@ -62,7 +78,6 @@
 			</table>
 		</div>
 	</div>
-	<a href="../add">Create Profile</a>
 </body>
 
 </html>

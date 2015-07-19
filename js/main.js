@@ -1,3 +1,12 @@
+
+//logout
+function logOut(){
+  var ajaxurl = 'profile/logout.php';
+      $.post(ajaxurl, "", function (response) {
+          history.go(0);
+      });
+}
+
 $(document).ready(function(){    
   //mobile jumbotron height
   if($(document).width() < 800){
@@ -12,7 +21,6 @@ $(document).ready(function(){
       $(".navbar-collapse").collapse('hide');
     });
   }
-
 
   //smooth scroll
   $("a[href*=#]").click(function(){
