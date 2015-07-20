@@ -60,7 +60,10 @@
 		<div class="container">	
 			<h1>Welcome to Team Ultra!</h1>
 			<p>We are committed to helping university students make time for exercise and physical activities.</p>
-			<p><a class="btn btn-info btn-lg" href="#about" role="button"><span class="glyphicon glyphicon-heart"></span> Get Active</a></p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="#about" role="button"><span class="glyphicon glyphicon-bookmark"></span> About Us </a>
+				<a class="btn btn-info btn-lg" href="add" role="button"><span class="glyphicon glyphicon-heart"></span> Get Active</a>
+			</p>
 			<p><a id="loginText" href="login">Already Active? Log in Here!</a></p>
 		</div>
 	</div>

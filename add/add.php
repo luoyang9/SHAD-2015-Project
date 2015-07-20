@@ -9,7 +9,9 @@
 	    $interests = test_input($_POST["interests"]);
 	    $username = $_POST["username"];
 	    $password = $_POST["password"];
-		
+			
+		$target_dir = "../uploads/";
+		$target_file = $target_dir . $username . "." . pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
 		
 	}
 
@@ -60,10 +62,11 @@
 	    }
 	}
 
-	$data = "INSERT INTO Profiles (firstname, lastname, email, birthday, year, interests, username, password)
-	VALUES ('$fname', '$lname', '$email', '$birthday', '$year', '$interests', '$username', '$hashpassword')";
+	$data = "INSERT INTO Profiles (firstname, lastname, email, birthday, year, interests, username, password, picture)
+	VALUES ('$fname', '$lname', '$email', '$birthday', '$year', '$interests', '$username', '$hashpassword', '$target_file')";
 
 	if ($conn->query($data) === TRUE) {
+		move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
 		session_start();
 		$_SESSION['username'] = $username;
 		$_SESSION['name'] = $fname . " " . $lname;

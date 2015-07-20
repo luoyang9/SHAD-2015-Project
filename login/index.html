@@ -5,7 +5,6 @@
 	<link rel="shortcut icon" href="../img/logo.ico">
 
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
-	<link rel="stylesheet" href="../css/profiles.css" />
 
 	<meta charset="utf-8" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -42,8 +41,8 @@
 			bottom: 5px;
 		}
 
-		#loginContainer {
-			text-align: center;
+		.form-horizontal {
+			margin: 0 auto;
 		}
 	</style>
 	<script>
@@ -127,12 +126,6 @@
 	<nav class="navbar navbar-default" id="mainNavBar" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNav">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
 				<a class="navbar-brand" href="../"><div class="glyphicon glyphicon-cloud"></div> Ultra</a>
 			</div>
 		</div>
@@ -140,25 +133,27 @@
 	<div class="container" id="loginContainer">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Login</h1>
+				<h1>Log In</h1>
 			</div>
 		</div>
 		<div class="row">
-			<form name="addProfile" action="add.php" method="post">
-				<table border="1" align="center">
-					<tr>
-						<td>Username</td>
-						<td><input type="text" name="username"/>
-					</tr>
-					<tr>
-						<td>Password</td>
-						<td><input type="password" name="password"/>
-					</tr>
-				</table>
-				<input type="button" value="Log In" onClick="logIn(username.value, password.value)" />
-			</form>
-			<a href="../profiles">View All Profiles</a>
-			<p id="feedback" style="color:red;"></p>
+			<div class="col-md-12">
+				<form role="form">
+					<div class="form-group">
+				    	<label for="inputUsername">Username</label>
+				      	<input type="text" class="form-control" name="username" id="inputUsername" placeholder="Username">
+				 	</div>
+				  	<div class="form-group">
+				  	  	<label for="inputPassword">Password</label>
+				      	<input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
+				  	</div>
+				 	<div class="form-group">
+					    <button type="button" onClick="logIn(username.value, password.value)" class="btn btn-info">Log In</button>
+				  	</div>
+				</form>
+				<a href="../add" style="color:lightblue">Don't have an account? Sign up here!</a>
+				<p id="feedback" style="color:red;"></p>
+			</div>
 		</div>
 	</div>
 	<div id="darkBackground">

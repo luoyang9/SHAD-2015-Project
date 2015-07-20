@@ -1,10 +1,35 @@
+<?php
+	session_start();
+
+	if (!isset($_SESSION['username'])) {
+		header('Location: ../login');
+		die();
+	}
+
+	if(isset($_SESSION['lastactivity'])){
+		$secondsInactive = time() - $_SESSION['lastactivity'];
+		if($secondsInactive >= 600){ //10 minutes for each session before expiring
+	        session_unset();
+	        session_destroy();
+			header('Location: ../login');
+			die();
+		}
+		$_SESSION["lastactivity"] = time();
+	}
+?>
+
 <html lang="en">
 <head>
 	<title>Profiles - SHAD Project</title>
 	<link rel="shortcut icon" href="img/logo.ico">
 
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
-	<link rel="stylesheet" href="../css/profiles.css" />
+
+	<style>
+		.center {
+			text-align:center;
+		}
+	</style>
 
 	<meta charset="utf-8" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -26,12 +51,12 @@
 	</nav>
 	<div class="container" id="profilesContainer">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12 center">
 				<h1>Profiles</h1>
 			</div>
 		</div>
 		<div class="row">
-			<table style="width:100%;" border="1" align="center">
+			<table class="table" align="center">
 				<tr>
 					<th>ID</th>
 					<th>First Name</th>

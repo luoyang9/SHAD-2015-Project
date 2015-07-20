@@ -36,16 +36,19 @@
 	$interestsAssoc = $interestsQuery->fetch_assoc();
 	$userInterests = explode(",", $interestsAssoc["interests"]);
 
+	$pictureQuery = $conn->query("SELECT picture FROM Profiles WHERE username='$tempusername'");
+	$pictureAssoc = $pictureQuery->fetch_assoc();
+	$picture = $pictureAssoc["picture"];
+
 ?>
 
 
 <html lang="en">
 <head>
 	<title>Profiles - SHAD Project</title>
-	<link rel="shortcut icon" href="img/logo.ico">
+	<link rel="shortcut icon" href="../img/logo.ico">
 
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
-	<link rel="stylesheet" href="../css/profiles.css" />
 
 	<meta charset="utf-8" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -62,10 +65,31 @@
 		function logOut(){
 			var ajaxurl = 'logout.php';
 	        $.post(ajaxurl, "", function (response) {
-	            window.location.href = "../";
+          		history.go(0);
+	        });
+		}
+
+		function editInterests(){
+			var interestsBox = document.getElementById("interestsBox");
+
+			interestsBox.contentEditable = true;
+			interestsBox.style.outline = "blue solid medium";
+		    interestsBox.focus();
+		}
+
+		function saveInterests(){
+			var interestsBox = document.getElementById("interestsBox");
+
+			var ajaxurl = 'editProfile.php';
+			var newinterests = interestsBox.innerHTML;
+			interestsBox.contentEditable = false;
+			interestsBox.style.outline = "none";
+	        $.post(ajaxurl,{interests: newinterests}, function (response) {
+	            window.location.href = "";
 	        });
 		}
 	</script>
+	
 </head>
 <body>
 	<nav class="navbar navbar-default" id="mainNavBar" role="navigation">
@@ -81,22 +105,41 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container" id="profileContainer">
+	<div class="container-fluid" id="profileContainer">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Welcome, <?php echo $_SESSION['username'] . " - " . $_SESSION['name'];?>!</h1>
+				<h1>Welcome, <?php echo $_SESSION['name'];?>!</h1>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<p>Your Interests: <?php foreach($userInterests as $interest){echo $interest . ", ";}?></p>
+				<div style="
+					margin:0 auto;
+					background:url('<?php echo $picture; ?>') no-repeat center;
+					width:100px;
+					height:100px;
+  					border: 1px solid white;
+    				border-radius: 50px;
+    				background-size:cover;"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<br/>
+				<p>Your Interests (click to edit!): </p> 
+				<div style="display:inline-block;outline:none;text-align:center;" id="interestsBox" onclick="editInterests()" onBlur="saveInterests()"><?php 
+					for($i = 1; $i <= count($userInterests); $i++){
+						echo $userInterests[$i-1];
+						if($i < count($userInterests)) echo ", ";
+					}
+				?></div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-12">
 				<h2>Your Matches</h2>
-				<table align="center" border="1">
+				<table class="table" align="center">
 					<tr>
 						<th>Name</th>
 						<th>UniYear</th>
@@ -119,7 +162,7 @@
 						    		$interestsArray = explode(",", $row["interests"]);
 						    		foreach($interestsArray as $interest){
 						    			foreach($userInterests as $userInterest){
-						    				if(strcasecmp($interest, $userInterest) == 0){
+						    				if(strcasecmp(trim($interest), trim($userInterest)) == 0){
 						    					$match = true;
 						    					$similarInterests .= $interest . ", ";
 						    				}
@@ -128,8 +171,9 @@
 						    	}
 						    	if($match){
 							        echo "<tr><td>" . $row["firstname"]. " " . $row["lastname"] . 
-							        "</td><td>" . $row["year"] . "</td><td>" . $similarInterests . "</td><td>" . 
+							        "</td><td>" . $row["year"] . "</td><td>" . substr($similarInterests, 0, -2) . "</td><td>" . 
 							        $row["birthday"] . "</td><td>". $row["email"] . "</td></tr>";
+							       // echo '<div class="row"><div class="col-md-8"></div></div>';
 						    	}
 						    }
 						} else {
