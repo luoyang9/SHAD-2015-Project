@@ -45,7 +45,7 @@
 
 <html lang="en">
 <head>
-	<title>Profiles - SHAD Project</title>
+	<title>Profile - Get Out!</title>
 	<link rel="shortcut icon" href="../img/logo.ico">
 
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
@@ -101,7 +101,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="../"><div class="glyphicon glyphicon-cloud"></div> Ultra</a>
+				<a class="navbar-brand" href="../"><div class="glyphicon glyphicon-cloud"></div> Get Out!</a>
 			</div>
 		</div>
 	</nav>

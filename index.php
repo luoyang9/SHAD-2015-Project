@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<title>SHAD Project</title>
+	<title>Get Out!</title>
 	<link rel="shortcut icon" href="img/logo.ico">
 
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -29,7 +29,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#home"><div class="glyphicon glyphicon-cloud"></div> Ultra</a>
+				<a class="navbar-brand" href="#home"><div class="glyphicon glyphicon-cloud"></div> Get Out!</a>
 			</div>
 
 
@@ -58,7 +58,7 @@
 	<!-- JUMBOTRON-->
 	<div class="jumbotron">
 		<div class="container">	
-			<h1>Welcome to Team Ultra!</h1>
+			<h1>Get Out!</h1>
 			<p>We are committed to helping university students make time for exercise and physical activities.</p>
 			<p>
 				<a class="btn btn-primary btn-lg" href="#about" role="button"><span class="glyphicon glyphicon-bookmark"></span> About Us </a>
