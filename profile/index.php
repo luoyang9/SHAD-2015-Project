@@ -87,8 +87,76 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<style>
+		@font-face {
+		    font-family: 'keepCalm';
+		    src: url('../fonts/KeepCalm-Medium.ttf');
+		}
+		@font-face {
+		    font-family: 'cocomatLight';
+		    src: url('../fonts/Cocomat Light.ttf');
+		}
+		@font-face {
+		    font-family: 'cocomatUltralight';
+		    src: url('../fonts/Cocomat Ultralight.ttf');
+		}
+		@font-face {
+		    font-family: 'cocomatUltralight';
+		    src: url('../fonts/Cocomat Ultralight.ttf');
+		}
+		@font-face {
+		    font-family: 'liberationBold';
+		    src: url('../fonts/LiberationSans-Bold.ttf');
+		}
+		@font-face {
+		    font-family: 'liberationRegular';
+		    src: url('../fonts/LiberationSans-Regular.ttf');
+		}
+
+		.navbar-default .navbar-nav > li > a {
+			color:#525252;
+			font-family: "liberationBold", sans-serif;
+			font-weight: 600;
+		}
+
+		.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-header a:hover,
+		.navbar-default .navbar-header a:focus, .navbar .navbar-brand {
+			color:black;
+			font-family: "liberationBold", sans-serif;
+			font-weight: 600;
+		}
+
+		#personalinfo {
+			border-top:1px solid lightgray;
+			border-bottom:1px solid lightgray;
+   			font-family: "liberationRegular";
+		}
+
+		#mainHeader{
+			background: url('../img/profileback.jpg') no-repeat center center fixed;
+			background-size:cover;
+   			overflow:hidden;
+   			font-family: "cocomatLight";
+		}
+
 		#buddiesContainer {
 			padding: 10px 0;
+			font-family:"liberationRegular";
+		}
+		
+		#matchesContainer {
+			font-family:"liberationRegular";
+		}
+
+		#buddiesContainer h2 {
+   			font-family: "cocomatLight";
+		}
+
+		#matchesContainer h2 {
+   			font-family: "cocomatLight";
+		}
+
+		.statinfo {
+   			font-family: "cocomatLight";
 		}
 
 		.profileDiv {
@@ -97,9 +165,7 @@
 			border:0px solid white;
 			border-radius: 25px;
 		}
-		.lightblue{
-			background-color:lightblue;
-		}
+
 		.orange{
 			background-color:#FF9966;
 		}
@@ -108,7 +174,9 @@
 		}
 		#profileContainer {
 			text-align:center;
-			padding-top:50px;
+			padding:50px 0 0 0;
+			width:100%;
+
 		}
 		#darkBackground {
 			position: fixed;
@@ -140,6 +208,13 @@
 			position: absolute;
 			bottom: 5px;
 		}
+
+		.infoborder{
+			display: inline-block;
+			padding:0 25px;
+			border-right: 1px solid lightgray;
+			border-left: 1px solid lightgray;
+		 }
 	</style>
 
 	<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
@@ -181,7 +256,7 @@
 		}
 
 		function editInterests(){
-			var interestsBox = document.getElementById("interestsBox");
+			var interestsBox = document.getElementById("interestsBox"); 	
 			oldInterests = interestsBox.textContent;
 
 			interestsBox.contentEditable = true;
@@ -195,7 +270,7 @@
 			var ajaxurl = 'editProfile.php';
 			var newinterests = interestsBox.textContent;
 			interestsBox.contentEditable = false;
-			interestsBox.style.outline = "#F4FFFF solid thin";
+			interestsBox.style.outline = "#F4FFFF solid medium";
 			if(oldInterests != newinterests){
 		        $.post(ajaxurl,{interests: newinterests}, function (response) {
 		            window.location.href = "";
@@ -219,19 +294,10 @@
 			});
 		}
 
-		function goToConvo(username){
-			var myForm = document.createElement("form");
-	        myForm.method="post" ;
-	        myForm.action = "messages/conversation/index.php" ;
-
-            var myInput = document.createElement("input") ;
-            myInput.setAttribute("name", "recipient") ;
-            myInput.setAttribute("value", username);
-            myForm.appendChild(myInput) ;	
-
-	        document.body.appendChild(myForm) ;
-	        myForm.submit() ;
-	        document.body.removeChild(myForm) ;
+		function goToConvo(username){ 
+			$.post("messages/setConvo.php",{username: username}, function (response) {
+		            window.location.href = "messages/conversation";
+			});
 		}
 	</script>
 	
@@ -246,201 +312,228 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="../"><div class="glyphicon glyphicon-cloud"></div> Get Out!</a>
+				<a class="navbar-brand" style="padding:8px" href="../"><div class="glyphicon glyphicon-chevron-left"></div><img src="../img/logo.png" width="100px"; height="30px"; /></a>
 			</div>
 
 			<div class="navbar-collapse collapse" id="mainNav">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a id="nav-about" href="messages"><div class="glyphicon glyphicon-bookmark"></div> Messages</a></li>
-					<li><a id="nav-about" href="#buddies"><div class="glyphicon glyphicon-bookmark"></div> Buddies</a></li>
-					<li><a id="nav-about" href="#matches"><div class="glyphicon glyphicon-bookmark"></div> Matches</a></li>
+					<li><a id="nav-about" href="messages"><div class="glyphicon glyphicon-comment"></div> MESSAGES</a></li>
+					<li><a id="nav-about" href="#buddies"><div class="glyphicon glyphicon-user"></div> BUDDIES</a></li>
+					<li><a id="nav-about" href="#matches"><div class="glyphicon glyphicon-resize-small"></div> MATCHES</a></li>
+					<li><a id="nav-about" href="../profiles"><div class="glyphicon glyphicon-th-list"></div> ALL PROFILES</a></li>
+					<li><a id="nav-about" href="events"><div class="glyphicon glyphicon-calendar"></div> EVENTS</a></li>
+					<li><a id="nav-about" href="rewards"><div class="glyphicon glyphicon-tag"></div> REWARDS</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="container-fluid" id="profileContainer">
-		<div class="row lightblue">
-			<div class="col-md-12">
-				<h1 style="color:white">Welcome, <?php echo $_SESSION['name'];?>!</h1>
+	<div id="profileContainer">
+		<div id="mainHeader">
+			<div class="container-fluid">
+				<div class="row lightblue">
+					<div class="col-md-12">
+						<h1 style="color:white">Welcome, <?php echo $_SESSION['name'];?>!</h1>
+					</div>
+				</div>
+				<div class="row lightblue">
+					<div class="col-md-12">
+						<div style="
+							margin:0 auto;
+							background:url('<?php echo $picture; ?>') no-repeat center;
+							width:200px;
+							height:200px;
+		  					border: 0px solid white;
+		    				border-radius: 100px;
+		    				background-size:cover;"></div>
+						<br/>
+						<button class="btn btn-danger" type="button" onClick="logOut()">Log Out</button>
+						<br/><br/>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class="row lightblue">
-			<div class="col-md-12">
-				<div style="
-					margin:0 auto;
-					background:url('<?php echo $picture; ?>') no-repeat center;
-					width:200px;
-					height:200px;
-  					border: 0px solid white;
-    				border-radius: 100px;
-    				background-size:cover;"></div>
-				<br/>
-				<button class="btn btn-danger" type="button" onClick="logOut()">Log Out</button>
-				<br/><br/>
+		<div class="container-fluid">
+			<div id="personalinfo">
+				<img src="../img/reward.png" height="100px" style="float:left;" />
+				<div class="statinfo" style="float:left;">
+					<h2 style="font-family:'liberationBold'">0</h2>
+					<h3>Fitness Points</h3>
+				</div>
+				<img src="../img/events.png" height="100px" style="float:right;"/>
+				<div class="statinfo" style="float:right;">
+					<h2 style="font-family:'liberationBold'">0</h2>
+					<h3>Upcoming Events</h3>
+				</div>
+				<div style="margin:0 auto;">
+					<br/>
+					<div class="infoborder">
+						<span style="font-weight:bold">Your Interests: </span>
+						<div style="padding:3px 8px;display:inline-block;outline:#F4FFFF solid medium;text-align:center;" id="interestsBox" onclick="editInterests()" onBlur="saveInterests()"><?php 
+								for($i = 1; $i <= count($userInterests); $i++){
+									echo $userInterests[$i-1];
+									if($i < count($userInterests)) echo ",";
+								}
+							?></div>
+						<br/>
+						<span style="color:gray">*Click to edit!</span>
+						<br/>
+						<br/>
+						<?php
+							echo "<span style='font-style:italic'>" . convertYear($year) . " Year - " . convertBirthday($birthday) . "</span>";
+						?>
+					</div>
+					<br/>
+					<br/>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<br/>
-				<span style="font-weight:bold">Your Interests: </span>
-				<div style="padding:3px 8px;display:inline-block;outline:#F4FFFF solid thin;text-align:center;" id="interestsBox" onclick="editInterests()" onBlur="saveInterests()"><?php 
-						for($i = 1; $i <= count($userInterests); $i++){
-							echo $userInterests[$i-1];
-							if($i < count($userInterests)) echo ",";
-						}
-					?></div>
-				<br/>
-				<span style="color:gray">*Click to edit!</span>
-				<br/>
-				<br/>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<?php
-					echo convertYear($year) . " Year - " . convertBirthday($birthday);
-				?>
-				<br/>
-				<br/>
+
+		<div class="container-fluid">
+			<div id="stats">
+				<div class="row">
+				</div>
 			</div>
 		</div>
 
 		<a id="buddies"></a>
-		<div class="row green" id="buddiesContainer">
-			<div class="col-md-12">
-				<h2>Matched Buddies</h2>
-				<div class="row">
-					<?php
-						if(count($buddies) <= 1 && $buddies[0] == ""){
-							echo "<div class='col-md-12'>No Buddies Found :(</div>";
-						}
-						else
-						{
-							$buddyProfiles = "SELECT picture, username, firstname, lastname, email, birthday, year, interests FROM Profiles";
-							$result = $conn->query($buddyProfiles);
+		<div class="container-fluid">
+			<div class="row green" id="buddiesContainer">
+				<div class="col-md-12">
+					<h2>Matched Buddies</h2>
+					<div class="row">
+						<?php
+							if(count($buddies) <= 1 && $buddies[0] == ""){
+								echo "<div class='col-md-12'>No Buddies Found :(</div>";
+							}
+							else
+							{
+								$buddyProfiles = "SELECT picture, username, firstname, lastname, email, birthday, year, interests FROM Profiles";
+								$result = $conn->query($buddyProfiles);
 
-							if ($result->num_rows > 0) 
-							{//there are people
-								$colCount = 0;
-							    while($row = $result->fetch_assoc()) 
-							    {
-									foreach($buddies as $buddy)
-									{
-										if($buddy == $row["username"])
+								if ($result->num_rows > 0) 
+								{//there are people
+									$colCount = 0;
+								    while($row = $result->fetch_assoc()) 
+								    {
+										foreach($buddies as $buddy)
 										{
-											$colCount++;
-											if($colCount > 4){
-												$colCount = 1;
-												echo "</div><div class='row'>";
-											}
-											$similarInterests = "";
-											$interestsArray = explode(",", $row["interests"]);
-								    		foreach($interestsArray as $interest){
-								    			foreach($userInterests as $userInterest){
-								    				if(strcasecmp(trim($interest), trim($userInterest)) == 0){
-								    					$similarInterests .= $interest . ", ";
-								    				}
-								    			}
+											if($buddy == $row["username"])
+											{
+												$colCount++;
+												if($colCount > 4){
+													$colCount = 1;
+													echo "</div><div class='row'>";
+												}
+												$similarInterests = "";
+												$interestsArray = explode(",", $row["interests"]);
+									    		foreach($interestsArray as $interest){
+									    			foreach($userInterests as $userInterest){
+									    				if(strcasecmp(trim($interest), trim($userInterest)) == 0){
+									    					$similarInterests .= $interest . ", ";
+									    				}
+									    			}
+									    		}
+												echo "<div class='col-md-3' style='margin:5px 0;'><div class='profileDiv'>
+									    				<div style='
+											        	background:url(\"" . $row["picture"] . "\") no-repeat center;
+														width:100px;
+														height:100px;
+														margin:0 auto;
+									  					border: 0px solid white;
+									    				border-radius: 50px;
+									    				background-size:cover;'>
+									    				</div>
+									    				<h3>" . $row["firstname"]. " " . $row["lastname"] . "</h3>
+									    				<h5 style='font-style:italic'>" . convertYear($row["year"]) . " Year - " . convertBirthday($row["birthday"]) . "</h5>
+									    				<p><span style='font-weight:bold'>Similar Interests: </span>" . substr($similarInterests, 0, -2) . "</p>
+									    				<p>". $row["email"] . "</p>
+									    				<button type='button' class='btn btn-info' onClick='goToConvo(\"" . $row["username"] . "\")'>Message</button>
+						    							</div></div>
+									    				";
 								    		}
-											echo "<div class='col-md-3' style='margin:5px 0;'><div class='profileDiv'>
-								    				<div style='
-										        	background:url(\"" . $row["picture"] . "\") no-repeat center;
-													width:100px;
-													height:100px;
-													margin:0 auto;
-								  					border: 0px solid white;
-								    				border-radius: 50px;
-								    				background-size:cover;'>
-								    				</div>
-								    				<h3>" . $row["firstname"]. " " . $row["lastname"] . "</h3>
-								    				<h5>" . convertYear($row["year"]) . " Year - " . convertBirthday($row["birthday"]) . "</h5>
-								    				<p><span style='font-weight:bold'>Similar Interests: </span>" . substr($similarInterests, 0, -2) . "</p>
-								    				<p>". $row["email"] . "</p>
-								    				<button type='button' class='btn btn-info' onClick='goToConvo(\"" . $row["username"] . "\")'>Message</button>
-					    							</div></div>
-								    				";
 							    		}
-						    		}
+									}
 								}
 							}
-						}
 
-					?>
+						?>
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<a id="matches"></a>
-		<div class="row orange">
-			<div class="col-md-12">
-				<h2>New Matches</h2>
-				<div class="row">
-					<?php
-						$allProfiles = "SELECT picture, username, firstname, lastname, email, birthday, year, interests FROM Profiles";
-						$result = $conn->query($allProfiles);
+		<div class="container-fluid">
+			<div class="row orange" id="matchesContainer">
+				<div class="col-md-12">
+					<h2>New Matches</h2>
+					<div class="row">
+						<?php
+							$allProfiles = "SELECT picture, username, firstname, lastname, email, birthday, year, interests FROM Profiles";
+							$result = $conn->query($allProfiles);
 
-						if ($result->num_rows > 0) {//there are people
-							$matches = 0;
-							$colCount = 0;
-						    while($row = $result->fetch_assoc()) {
+							if ($result->num_rows > 0) {//there are people
+								$matches = 0;
+								$colCount = 0;
+							    while($row = $result->fetch_assoc()) {
 
-						    	$duplicateBuddy = false;
-					    		foreach($buddies as $buddy)
-								{
-									if($buddy == $row["username"]) $duplicateBuddy = true;
-								}
-								if($duplicateBuddy) continue;
+							    	$duplicateBuddy = false;
+						    		foreach($buddies as $buddy)
+									{
+										if($buddy == $row["username"]) $duplicateBuddy = true;
+									}
+									if($duplicateBuddy) continue;
 
-								$match = false;
-								$similarInterests = "";
-						    	if($row["username"] !== $_SESSION["username"]){
-						    		$interestsArray = explode(",", $row["interests"]);
-						    		foreach($interestsArray as $interest){
-						    			foreach($userInterests as $userInterest){
-						    				if(strcasecmp(trim($interest), trim($userInterest)) == 0){
-						    					$match = true;
-						    					$similarInterests .= $interest . ", ";
-						    				}
-						    			}
-						    		}
-						    	}
-						    	if($match){
-									$colCount++;
-									$matches++;
-						    		if($colCount > 4){
-						    			echo "</div><div class='row'>";
-						    			$colCount = 1;
-						    		} 
-					    			echo "<div class='col-md-3' style='margin:5px 0;'><div class='profileDiv'>
-					    				<div style='
-							        	background:url(\"" . $row["picture"] . "\") no-repeat center;
-										width:100px;
-										height:100px;
-										margin:0 auto;
-					  					border: 0px solid white;
-					    				border-radius: 50px;
-					    				background-size:cover;'>
-					    				</div>
-					    				<h3>" . $row["firstname"]. " " . $row["lastname"] . "</h3>
-					    				<h5>" . convertYear($row["year"]) . " Year - " . convertBirthday($row["birthday"]) . "</h5>
-					    				<p><span style='font-weight:bold'>Similar Interests: </span>" . substr($similarInterests, 0, -2) . "</p>
-					    				<p>". $row["email"] . "</p>
-					    				<button type='button' id='btn-" . $row["username"] . "' class='btn btn-info' onClick='requestMatch(\"" . $row["username"] . "\")'>Match Me!</button>
-					    			</div></div>";
-						    		
-						    	}
-						    }
-						    if($matches == 0) echo "<div class='col-md-12'>No Matches Founds</div>";
-						} else {
-						    echo "<div class='col-md-12'>No Matches Founds</div>";
-						}
+									$match = false;
+									$similarInterests = "";
+							    	if($row["username"] !== $_SESSION["username"]){
+							    		$interestsArray = explode(",", $row["interests"]);
+							    		foreach($interestsArray as $interest){
+							    			foreach($userInterests as $userInterest){
+							    				if(strcasecmp(trim($interest), trim($userInterest)) == 0){
+							    					$match = true;
+							    					$similarInterests .= $interest . ", ";
+							    				}
+							    			}
+							    		}
+							    	}
+							    	if($match){
+										$colCount++;
+										$matches++;
+							    		if($colCount > 4){
+							    			echo "</div><div class='row'>";
+							    			$colCount = 1;
+							    		} 
+						    			echo "<div class='col-md-3' style='margin:5px 0;'><div class='profileDiv'>
+						    				<div style='
+								        	background:url(\"" . $row["picture"] . "\") no-repeat center;
+											width:100px;
+											height:100px;
+											margin:0 auto;
+						  					border: 0px solid white;
+						    				border-radius: 50px;
+						    				background-size:cover;'>
+						    				</div>
+						    				<h3>" . $row["firstname"]. " " . $row["lastname"] . "</h3>
+						    				<h5 style='font-style:italic'>" . convertYear($row["year"]) . " Year - " . convertBirthday($row["birthday"]) . "</h5>
+						    				<p><span style='font-weight:bold'>Similar Interests: </span>" . substr($similarInterests, 0, -2) . "</p>
+						    				<p>". $row["email"] . "</p>
+						    				<button type='button' id='btn-" . $row["username"] . "' class='btn btn-info' onClick='requestMatch(\"" . $row["username"] . "\")'>Match Me!</button>
+						    			</div></div>";
+							    		
+							    	}
+							    }
+							    if($matches == 0) echo "<div class='col-md-12'>No Matches Founds</div>";
+							} else {
+							    echo "<div class='col-md-12'>No Matches Founds</div>";
+							}
 
-						$conn->close();
-					?>
+							$conn->close();
+						?>
+					</div>
 				</div>
 			</div>
 		</div>
-		<br/>
 	</div>
 	<div id="darkBackground">
 		<div id="contactAlert">

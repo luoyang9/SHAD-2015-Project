@@ -45,6 +45,18 @@
 
 	<link rel="stylesheet" href="../../css/bootstrap.min.css" />
 	<style>
+		@font-face {
+		    font-family: 'cocomatLight';
+		    src: url('../../fonts/Cocomat Light.ttf');
+		}
+		@font-face {
+		    font-family: 'liberationBold';
+		    src: url('../../fonts/LiberationSans-Bold.ttf');
+		}
+		@font-face {
+		    font-family: 'liberationRegular';
+		    src: url('../../fonts/LiberationSans-Regular.ttf');
+		}
 		.userpic {
 			width:50px;
 			height:50px;
@@ -60,6 +72,7 @@
 
 		.convoinfo {
   			display: inline-block;
+			font-family: "liberationBold";
 		}
 
 		.recipientname {
@@ -72,6 +85,7 @@
 			margin:5px;
 			font-family: "Open Sans", sans-serif;
 			color:gray;
+			font-family: "liberationRegular";
 		}
 
 		.chatrow {
@@ -90,19 +104,10 @@
 
 	<script type="text/javascript" src="../../js/jquery-1.11.1.min.js"></script>
 	<script>
-		function goToConvo(username){
-			var myForm = document.createElement("form");
-	        myForm.method="post" ;
-	        myForm.action = "conversation/index.php" ;
-
-            var myInput = document.createElement("input") ;
-            myInput.setAttribute("name", "recipient") ;
-            myInput.setAttribute("value", username);
-            myForm.appendChild(myInput) ;	
-
-	        document.body.appendChild(myForm) ;
-	        myForm.submit() ;
-	        document.body.removeChild(myForm) ;
+		function goToConvo(username){ 
+			$.post("setConvo.php",{username: username}, function (response) {
+		            window.location.href = "conversation";
+			});
 		}
 	</script>
 
@@ -117,14 +122,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="../"><div class="glyphicon glyphicon-cloud"></div> Back to Profile</a>
+				<a class="navbar-brand" style="padding:8px" href="../"><div class="glyphicon glyphicon-chevron-left"></div><img src="../../img/logo.png" width="100px"; height="30px"; /></a>
 			</div>
 		</div>
 	</nav>
 	<div class="container messagescontainer">
 		<div clas="row">
 			<div class="col-md-12">
-				<h1 style="text-align:center">Messages</h1>
+				<h1 style="text-align:center; font-family:'cocomatLight'">Messages</h1>
 			</div>
 		</div>
 		<div class="row">

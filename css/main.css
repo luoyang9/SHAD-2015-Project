@@ -2,6 +2,26 @@
     font-family: 'keepCalm';
     src: url('../fonts/KeepCalm-Medium.ttf');
 }
+@font-face {
+    font-family: 'cocomatLight';
+    src: url('../fonts/Cocomat Light.ttf');
+}
+@font-face {
+    font-family: 'cocomatUltralight';
+    src: url('../fonts/Cocomat Ultralight.ttf');
+}
+@font-face {
+    font-family: 'cocomatUltralight';
+    src: url('../fonts/Cocomat Ultralight.ttf');
+}
+@font-face {
+    font-family: 'liberationBold';
+    src: url('../fonts/LiberationSans-Bold.ttf');
+}
+@font-face {
+    font-family: 'liberationRegular';
+    src: url('../fonts/LiberationSans-Regular.ttf');
+}
 
 html {
 	height: 100%;
@@ -25,15 +45,15 @@ body{
 }
 
 .navbar-default .navbar-nav > li > a {
-	color:#FF6600;
-	font-family: "Open Sans", sans-serif;
+	color:#5CADFF;
+	font-family: "liberationBold", sans-serif;
 	font-weight: 600;
 }
 
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-header a:hover,
 .navbar-default .navbar-header a:focus, .navbar .navbar-brand {
-	color:#FF3300;
-	font-family: "Open Sans", sans-serif;
+	color:#3399FF;
+	font-family: "liberationBold", sans-serif;
 	font-weight: 600;
 }
 
@@ -57,13 +77,14 @@ body{
 
 .jumbotron .container {
 	text-align: center;
-    color: orange;
+    color: #3399FF;
     display: table-cell;
     vertical-align: middle;
 }
 
 .jumbotron .container .btn {
 	text-shadow: none;
+	font-family: "liberationRegular";
 }
 
 #backgroundimage {
@@ -72,41 +93,65 @@ body{
 
 #caption {
 	font-size:30px;
-	margin-bottom:20px;
+	margin-bottom:30px;
+    font-family: "cocomatLight";
 }
 
 #loginText {
 	font-size: 15px ;
-	color: green;
+	color: #FF6600;
 	font-weight:400;
 }
 
 .about {
 	text-align: center;
 	padding:70px 0;
-	border-bottom: 1px solid #FF6600;
 	background-color:#EEEEEE;
 }
 
 .about h1 {
-	font-family: "keepCalm";
+	font-family: "cocomatLight";
 }
 
 .about p {
-	font-family: "Open Sans", sans-serif;
+	font-family: "liberationRegular", sans-serif;
 	color:gray;
 }
 
 .solution {
 	text-align: center;
 	padding:50px 0;
+	border-top: 1px solid #FFD699;
+	border-bottom: 1px solid #FFD699;
 }
 
 .solution h2{
-	font-family: "keepCalm";
+	font-family: "cocomatLight";
 }
 
 .solution p {
-	font-family: "Open Sans", sans-serif;
+	font-family: "liberationRegular", sans-serif;
 	color:gray;
+}
+
+.faq {
+	padding:20px 0;
+	background-color:#EEEEEE;
+}
+
+.faq h1 {
+	font-family: "cocomatLight";
+}
+
+.faq p {
+	font-family: "liberationRegular", sans-serif;
+	color:gray;
+}
+
+.copyright{
+	font-family: "liberationRegular", sans-serif;
+	height:80px;
+	color:lightgray;
+	padding:20px;
+	background-color:#2e2e2e;
 }

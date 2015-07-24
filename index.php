@@ -30,7 +30,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#home"><img src="img/logo.png" width="100px"; height="30px"; /></a>
+				<a class="navbar-brand" style="padding:8px" href="#home"><img src="img/logo.png" width="100px"; height="30px"; /></a>
 			</div>
 
 
@@ -42,15 +42,15 @@
 						session_start();
 						if(!isset($_SESSION['username']))
 						{
-							echo '<li><a href="login"><div class="glyphicon glyphicon-phone"></div> LOG IN</a></li><li><a href="add"><div class="glyphicon glyphicon-camera"></div> SIGN UP</a></li>';
+							echo '<li><a href="login"><div class="glyphicon glyphicon-log-in"></div> LOG IN</a></li><li><a href="add"><div class="glyphicon glyphicon-new-window"></div> SIGN UP</a></li>';
 						}
 						else{
-							echo '<li><a href="profiles"><div class="glyphicon glyphicon-cutlery"></div> PROFILES</a></li><li><a href="profile"><div class="glyphicon glyphicon-camera"></div> MY PROFILE</a></li><li><a href="javascript:logOut()"><div class="glyphicon glyphicon-camera"></div> LOG OUT</a></li>';
+							echo '<li><a href="profiles"><div class="glyphicon glyphicon-th-list"></div> ALL PROFILES</a></li><li><a href="profile"><div class="glyphicon glyphicon-user"></div> MY PROFILE</a></li><li><a href="javascript:logOut()"><div class="glyphicon glyphicon-log-out"></div> LOG OUT</a></li>';
 						}
 					?>
 
 
-					<li><a href="#contact"><div class="glyphicon glyphicon-earphone"></div> CONTACT</a></li>
+					<li><a href="http://fitnessabout.wix.com/getout#!contact/cmk9"><div class="glyphicon glyphicon-earphone"></div> CONTACT</a></li>
 				</ul>
 			</div>
 		</div>
@@ -90,9 +90,9 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h1>Let's Get Outdoors</h1>
-					<p>GetOut! is a revolutionary blah blah that let's university students get out more. As more and more students fall
-						into the trap of unhealthy eating, limited physical activities, and a stressful schedule, they 
-						become inactive and blah blah gain weight.</p>
+					<p>GetOut! is comprised of a diverse group of 6 young professionals, from British Columbia all the way to Newfoundland & Labrador. GetOu! was formed in 2015 as part of the SHAD Waterloo program.
+We aim to help university students to get outside and exercise more by matching them with a workout accountabilibuddy on campus. Through this, we hope to improve the mental, physical, and emotional health of university students.</p>
+					<a href="http://fitnessabout.wix.com/getout" style="color: #FF6600;">For more information, visit our information site</a>
 				</div>
 			</div>
 		</div>
@@ -104,7 +104,7 @@
 				<div class="col-md-4">
 					<div style="
 						margin:0 auto;
-						background:url('img/noimage.jpg') no-repeat center;
+						background:url('img/easy.png') no-repeat center;
 						width:200px;
 						height:200px;
 	  					border: 0px solid white;
@@ -117,7 +117,8 @@
 				<div class="col-md-4">
 					<div style="
 						margin:0 auto;
-						background:url('img/noimage.jpg') no-repeat center;
+						background-color:lightorange;
+						background:url('img/buddy.png') no-repeat center;
 						width:200px;
 						height:200px;
 	  					border: 0px solid white;
@@ -130,7 +131,7 @@
 				<div class="col-md-4">
 					<div style="
 						margin:0 auto;
-						background:url('img/noimage.jpg') no-repeat center;
+						background:url('img/lock.png') no-repeat center;
 						width:200px;
 						height:200px;
 	  					border: 0px solid white;
@@ -142,6 +143,49 @@
 			</div>
 		</div>
 	</div>
-	<a id="contact"></a>
+	<div class="container-fluid faq">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 style="text-align:center">FAQ</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h1>What are the benefits of exercising?</h1>
+					<p>Many people tend to find excuse to avoid exercising, pushing it off due to workload. However, 
+It is beneficial to get up from your desk as exercise helps memory and thinking through both direct and indirect means. Exercise also improves mood and sleep, and reduces stress and anxiety. Exercising regularly could improve your efficiency, allow you to have a healthier lifestyle, and even help you ace tests!</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h1>Why a fitness buddy?</h1>
+					<p>Numerous studies have confirmed that exercise is greatly enhanced when you are with a buddy or in a group setting. Exercising with a buddy allows you to be more accountable, which prevents you from slacking off and making the most out of your experience.  A fitness buddy encourages you to try more new activities, makes exercising more fun, and keeps you motivated.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h1>How to get started?</h1>
+					<p>First, create a profile that tells the world about your favorite fitness activities, why you love to maintain an active lifestyle and what you’re looking for in your activity partners. Next, post some photos, especially ones that highlight your fitness passion. You can even peruse the profiles of other members and “Show Interest” in the ones that seem like a fitness match.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h1>How does GetOut! match people? </h1>
+					<p>As you write your profile, don’t worry about making yourself sound like the next summer Olympics star - just be honest! You’ll get the best results and ensure that you find someone who is at the same level of fitness activity as you. And whether you’re looking for a yoga partner, running partner, bodybuilding partner or any other kind of match, Fitness Singles is the place you want to be.</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="container-fluid copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<p>© 2015 GetOut!. All Rights Reserved | Designed and developed by the Shad Valley Waterloo 2015 GetOut! team.</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

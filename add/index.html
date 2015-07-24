@@ -10,6 +10,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<style>
+		@font-face {
+		    font-family: 'cocomatLight';
+		    src: url('../fonts/Cocomat Light.ttf');
+		}
+		@font-face {
+		    font-family: 'liberationBold';
+		    src: url('../fonts/LiberationSans-Bold.ttf');
+		}
+		@font-face {
+		    font-family: 'liberationRegular';
+		    src: url('../fonts/LiberationSans-Regular.ttf');
+		}
 		#darkBackground {
 			position: fixed;
 			top: 0%; 
@@ -32,13 +44,17 @@
 			position: relative; 
 			margin-right: auto;
 			margin-left: auto; 
-			visibility: hidden;
+			visibility: hidden; 
 			text-align: center;
 		}
 
 		#alertButton {
 			position: absolute;
 			bottom: 5px;
+		}
+
+		#signUpContainer {
+			font-family: "liberationRegular";
 		}
 
 		.center {
@@ -188,14 +204,14 @@
 	<nav class="navbar navbar-default" id="mainNavBar" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="../"><div class="glyphicon glyphicon-cloud"></div> Get Out!</a>
+				<a class="navbar-brand" style="padding:8px" href="../"><div class="glyphicon glyphicon-chevron-left"></div><img src="../img/logo.png" width="100px"; height="30px"; /></a>
 			</div>
 		</div>
 	</nav>
 	<div class="container" id="signUpContainer">
 		<div class="row">
 			<div class="col-md-12 center">
-				<h1>Create a Profile</h1>
+				<h1 style="font-family:'cocomatLight'">Create a Profile</h1>
 				<a href="../login" style="color:lightblue">Already have an account? Log in here!</a>
 			</div>
 		</div>

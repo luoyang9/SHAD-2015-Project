@@ -17,7 +17,7 @@
 		$_SESSION["lastactivity"] = time();
 	}
 
-	if(!isset($_POST["recipient"])){
+	if(!isset($_SESSION["recipient"])){
 		header('Location: ../');
 		die();
 	}
@@ -43,7 +43,7 @@
 	$userPicture = $userResults["picture"];
 	$userFullName = $userResults["firstname"] . " " . $userResults["lastname"];
 
-	$recipient = $_POST["recipient"];
+	$recipient = $_SESSION["recipient"];
 	$recipientQuery = $conn->query("SELECT firstname, lastname, picture FROM Profiles where username='$recipient'");
 	$recipientResults = $recipientQuery->fetch_assoc();
 	$recipientPicture = $recipientResults["picture"];
@@ -58,6 +58,10 @@
 
 	<link rel="stylesheet" href="../../../css/bootstrap.min.css" />
 	<style>
+		@font-face {
+		    font-family: 'cocomatLight';
+		    src: url('../../../fonts/Cocomat Light.ttf');
+		}
 		.userpic {
 			width:50px;
 			height:50px;
@@ -159,14 +163,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="../"><div class="glyphicon glyphicon-cloud"></div> Back to Messages</a>
+				<a class="navbar-brand" style="padding:8px" href="../"><div class="glyphicon glyphicon-chevron-left"></div><img src="../../../img/logo.png" width="100px"; height="30px"; /></a>
 			</div>
 		</div>
 	</nav>
 	<div class="container messagescontainer">
 		<div clas="row">
 			<div class="col-md-12">
-				<h1 style="text-align:center">Message with <?php echo $recipientFullName; ?></h1>
+				<h1 style="text-align:center; font-family:'cocomatLight'">Message with <?php echo $recipientFullName; ?></h1>
 			</div>
 		</div>
 		<div class="row">

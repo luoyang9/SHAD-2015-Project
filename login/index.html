@@ -10,6 +10,18 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<style>
+		@font-face {
+		    font-family: 'cocomatLight';
+		    src: url('../fonts/Cocomat Light.ttf');
+		}
+		@font-face {
+		    font-family: 'liberationBold';
+		    src: url('../fonts/LiberationSans-Bold.ttf');
+		}
+		@font-face {
+		    font-family: 'liberationRegular';
+		    src: url('../fonts/LiberationSans-Regular.ttf');
+		}
 		#darkBackground {
 			position: fixed;
 			top: 0%; 
@@ -39,6 +51,10 @@
 		#alertButton {
 			position: absolute;
 			bottom: 5px;
+		}
+
+		#loginContainer {
+			font-family: "liberationRegular";
 		}
 
 		.form-horizontal {
@@ -126,14 +142,14 @@
 	<nav class="navbar navbar-default" id="mainNavBar" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="../"><div class="glyphicon glyphicon-cloud"></div> Get Out!</a>
+				<a class="navbar-brand" style="padding:8px" href="../"><div class="glyphicon glyphicon-chevron-left"></div><img src="../img/logo.png" width="100px"; height="30px"; /></a>
 			</div>
 		</div>
 	</nav>
 	<div class="container" id="loginContainer">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Log In</h1>
+				<h1 style="font-family:'cocomatLight'">Log In</h1>
 			</div>
 		</div>
 		<div class="row">

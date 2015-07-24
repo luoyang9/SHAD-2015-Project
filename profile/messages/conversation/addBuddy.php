@@ -6,13 +6,18 @@
 		die();
 	}
 
+	if($_POST["username"] === $_SESSION["username"]){
+		echo 3;
+		die();
+	}
+
 	$tempusername = $_SESSION["username"];
 	$username = test_input($_POST["username"]);
 
 	function test_input($data) {
 	  $data = trim($data);
 	  $data = stripslashes($data);
-	  $data = htmlspecialchars($data);
+	  //$data = htmlspecialchars($data);
 	  return $data;
 	}
 

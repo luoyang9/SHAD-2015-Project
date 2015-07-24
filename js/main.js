@@ -82,21 +82,21 @@ $(document).ready(function(){
       {
         TweenLite.to(".navbar", 0.5, {backgroundColor:"transparent"});
 
-        $(".navbar-default .navbar-nav > li > a").css('color', '#FF6600');
+        $(".navbar-default .navbar-nav > li > a").css('color', '#5CADFF');
 
         $(".navbar-default .navbar-nav > li > a").mouseover(function() {
-          $(this).css("color","#FF3300")
+          $(this).css("color","#3399FF")
         }).mouseout(function(){
-          $(this).css("color", "#FF6600");
+          $(this).css("color", "#5CADFF");
         });
 
         $(".navbar-default .navbar-nav > li > a").focus(function(){
-          $(this).css("color", "#FF3300");
+          $(this).css("color", "#3399FF");
         }).blur(function(){
-          $(this).css("color", "#FF6600");
+          $(this).css("color", "#5CADFF");
         });
 
-        $(".navbar .navbar-brand").css("color", "#FF3300");
+        $(".navbar .navbar-brand").css("color", "#3399FF");
         $(".navbar-toggle").hide();
       }
     });
