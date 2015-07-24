@@ -37,6 +37,7 @@
 	$birthday = clean_string($birthday);
 	$year = clean_string($year);
 	$interests = clean_string($interests);
+	$interests = strtolower($interests);
 
 	//hashing and salting passwords
 	$salt = "temporarysalt";

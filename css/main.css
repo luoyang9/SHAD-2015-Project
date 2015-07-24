@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'keepCalm';
+    src: url('../fonts/KeepCalm-Medium.ttf');
+}
+
 html {
 	height: 100%;
 	min-height: 100%;
@@ -20,12 +25,16 @@ body{
 }
 
 .navbar-default .navbar-nav > li > a {
-	color:#E3E3E3; 
+	color:#FF6600;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 600;
 }
 
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-header a:hover,
 .navbar-default .navbar-header a:focus, .navbar .navbar-brand {
-	color:white;
+	color:#FF3300;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 600;
 }
 
 .jumbotron {
@@ -38,11 +47,17 @@ body{
     overflow:hidden;
     display:table;
     z-index:1;
+    margin:0;
+}
+
+.jumbotron p {
+	font-family:"Open Sans", sans-serif;
+	font-weight: 400;
 }
 
 .jumbotron .container {
 	text-align: center;
-    color: white;
+    color: orange;
     display: table-cell;
     vertical-align: middle;
 }
@@ -51,7 +66,47 @@ body{
 	text-shadow: none;
 }
 
+#backgroundimage {
+	margin-bottom:20px;
+}
+
+#caption {
+	font-size:30px;
+	margin-bottom:20px;
+}
+
 #loginText {
 	font-size: 15px ;
-	color: white;
+	color: green;
+	font-weight:400;
+}
+
+.about {
+	text-align: center;
+	padding:70px 0;
+	border-bottom: 1px solid #FF6600;
+	background-color:#EEEEEE;
+}
+
+.about h1 {
+	font-family: "keepCalm";
+}
+
+.about p {
+	font-family: "Open Sans", sans-serif;
+	color:gray;
+}
+
+.solution {
+	text-align: center;
+	padding:50px 0;
+}
+
+.solution h2{
+	font-family: "keepCalm";
+}
+
+.solution p {
+	font-family: "Open Sans", sans-serif;
+	color:gray;
 }

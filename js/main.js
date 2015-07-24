@@ -1,3 +1,15 @@
+//query loader
+window.addEventListener('DOMContentLoaded', function() {
+  new QueryLoader2(document.querySelector("body"), {
+    barColor: "lightblue",
+    backgroundColor: "white",
+    percentage: true,
+    barHeight: 3,
+    minimumTime: 200,
+    maxTime: 60000,
+    fadeOutTime: 1000
+  });
+});
 
 //logout
 function logOut(){
@@ -12,6 +24,12 @@ $(document).ready(function(){
   if($(document).width() < 800){
     var screenHeight = $(window).height();
     $(".jumbotron").css("height", screenHeight + "px");
+
+    $(".jumbotron").css("padding-top", "60px");
+
+    $("#backgroundimage").css("width", "100%");
+    var newwidth =  $("#backgroundimage").width();
+    $("#backgroundimage").css("height", newwidth / 3.33);
 
     //collapse navbar toggle
     $(".navbar-nav li a").click(function(event) {
@@ -64,21 +82,21 @@ $(document).ready(function(){
       {
         TweenLite.to(".navbar", 0.5, {backgroundColor:"transparent"});
 
-        $(".navbar-default .navbar-nav > li > a").css('color', '#E3E3E3');
+        $(".navbar-default .navbar-nav > li > a").css('color', '#FF6600');
 
         $(".navbar-default .navbar-nav > li > a").mouseover(function() {
-          $(this).css("color","white")
+          $(this).css("color","#FF3300")
         }).mouseout(function(){
-          $(this).css("color", "#E3E3E3");
+          $(this).css("color", "#FF6600");
         });
 
         $(".navbar-default .navbar-nav > li > a").focus(function(){
-          $(this).css("color", "white");
+          $(this).css("color", "#FF3300");
         }).blur(function(){
-          $(this).css("color", "#E3E3E3");
+          $(this).css("color", "#FF6600");
         });
 
-        $(".navbar .navbar-brand").css("color", "white");
+        $(".navbar .navbar-brand").css("color", "#FF3300");
         $(".navbar-toggle").hide();
       }
     });

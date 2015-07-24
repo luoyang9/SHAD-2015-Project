@@ -1,7 +1,10 @@
 <?php
 	session_start();
-
-	$interests = test_input($_POST["interests"]);
+	if(!isset($_POST["username"])){
+		echo 0;
+		die();
+	}
+	$username = test_input($_POST["username"]);
 
 	function test_input($data) {
 	  $data = trim($data);
@@ -19,8 +22,7 @@
 
 	}
 
-	$interests = clean_string($interests);
-	$interests = strtolower($interests);
+	$username = clean_string($username);
 
 	$servername = "localhost";
 	$serverusername = "cl53-shad2015";
@@ -31,11 +33,11 @@
 	$conn = new mysqli($servername, $serverusername, $serverpassword, $database);
 
 	$tempusername = $_SESSION["username"];
-	$data = "UPDATE Profiles SET interests='$interests' WHERE username='$tempusername'";
+	$data = "INSERT INTO Messages (username, username2, message) VALUES ('$tempusername', '$username', 'Please accept my request to be your buddy! <a href=\"javascript:addBuddy(\'" . $_SESSION["username"] . "\')\">Click Here!</a>')";
 	if ($conn->query($data) === TRUE) {
 		echo 1;
 	} else {
-		error_log("something happened lol");
+		echo 0;
 	}
 
 ?>
