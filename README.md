@@ -1,7 +1,13 @@
 # SHAD-2015-Project
 Final Design Project Website for SHAD 2015
 
-The website was built using mainly PHP, Bootstrap, jQuery, and MySQL.
+GetOut! is a fitness matching website designed to match people with similar physical interests together. Made for the SHAD Waterloo 2015 program.
 
-Temporary URL: www.charliezhang.xyz/shad2015
+Built using mainly PHP, Bootstrap, jQuery, and a MySQL database.
+
+#####Temporary URL: www.charliezhang.xyz/shad2015
+
+###Features
+Matching system that matches profiles with similar interests, buddy system where you can add people to your buddy list, functional messaging system, easily edit your own interests to update your matches, upload a personal profile pic.
+
 
