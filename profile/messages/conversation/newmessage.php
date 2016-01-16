@@ -1,4 +1,5 @@
 <?php
+	$config = require("../../../../../config.php");
 	session_start();
 
 	$message = test_input($_POST["message"]);
@@ -25,10 +26,10 @@
 	$sender = clean_string($sender);
 	$recipient = clean_string($recipient);
 
-	$servername = "localhost";
-	$serverusername = "cl53-shad2015";
-	$serverpassword = "shad";
-	$database = "cl53-shad2015";
+	$servername = $config["name"];
+	$serverusername = $config["username"];
+	$serverpassword = $config["password"];
+	$database = $config["database"];
 
 	// Create connection
 	$conn = new mysqli($servername, $serverusername, $serverpassword, $database);

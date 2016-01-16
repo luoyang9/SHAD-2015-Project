@@ -1,4 +1,5 @@
 <?php
+	$config = require("../../../../../config.php");
 	session_start();
 
 	if (!isset($_SESSION['username'])) {
@@ -22,13 +23,13 @@
 		die();
 	}
 
-	$servername = "localhost";
-	$username = "cl53-shad2015";
-	$password = "shad";
-	$database = "cl53-shad2015";
+	$servername = $config["name"];
+	$serverusername = $config["username"];
+	$serverpassword = $config["password"];
+	$database = $config["database"];
 
 	// Create connection
-	$conn = new mysqli($servername, $username, $password, $database);
+	$conn = new mysqli($servername, $serverusername, $serverpassword, $database);
 
 	// Check connection
 	if ($conn->connect_error) {

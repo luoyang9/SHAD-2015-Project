@@ -1,5 +1,6 @@
 
 <?php
+	$config = require("../../../config.php");
 	session_start();
 
 	if (!isset($_SESSION['username'])) {
@@ -18,13 +19,13 @@
 		$_SESSION["lastactivity"] = time();
 	}
 
-	$servername = "localhost";
-	$username = "cl53-shad2015";
-	$password = "shad";
-	$database = "cl53-shad2015";
+	$servername = $config["name"];
+	$serverusername = $config["username"];
+	$serverpassword = $config["password"];
+	$database = $config["database"];
 
 	// Create connection
-	$conn = new mysqli($servername, $username, $password, $database);
+	$conn = new mysqli($servername, $serverusername, $serverpassword, $database);
 
 	// Check connection
 	if ($conn->connect_error) {
@@ -129,6 +130,10 @@
 			border-top:1px solid lightgray;
 			border-bottom:1px solid lightgray;
    			font-family: "liberationRegular";
+		}
+
+		#personalinfo a {
+			color:black;
 		}
 
 		#mainHeader{
@@ -354,16 +359,20 @@
 		</div>
 		<div class="container-fluid">
 			<div id="personalinfo">
-				<img src="../img/reward.png" height="100px" style="float:left;" />
-				<div class="statinfo" style="float:left;">
-					<h2 style="font-family:'liberationBold'">0</h2>
-					<h3>Fitness Points</h3>
-				</div>
-				<img src="../img/events.png" height="100px" style="float:right;"/>
-				<div class="statinfo" style="float:right;">
-					<h2 style="font-family:'liberationBold'">0</h2>
-					<h3>Upcoming Events</h3>
-				</div>
+				<a href="rewards">
+					<img src="../img/reward.png" height="100px" style="float:left;" />
+					<div class="statinfo" style="float:left;">
+						<h2 style="font-family:'liberationBold'">0</h2>
+						<h3>Fitness Points</h3>
+					</div>
+				</a>
+				<a href="events">
+					<img src="../img/events.png" height="100px" style="float:right;"/>
+					<div class="statinfo" style="float:right;">
+						<h2 style="font-family:'liberationBold'">0</h2>
+						<h3>Upcoming Events</h3>
+					</div>
+				</a>
 				<div style="margin:0 auto;">
 					<br/>
 					<div class="infoborder">

@@ -20,7 +20,7 @@
 
 <html lang="en">
 <head>
-	<title>Events - Get Out!</title>
+	<title>Rewards - Get Out!</title>
 	<link rel="shortcut icon" href="../../img/logo.ico">
 
 	<link rel="stylesheet" href="../../css/bootstrap.min.css" />

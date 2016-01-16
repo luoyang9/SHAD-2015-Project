@@ -1,4 +1,5 @@
 <?php
+	$config = require("../../../config.php");
 	session_start();
 
 	if (!isset($_SESSION['username'])) {
@@ -17,13 +18,13 @@
 		$_SESSION["lastactivity"] = time();
 	}
 
-	$servername = "localhost";
-	$username = "cl53-shad2015";
-	$password = "shad";
-	$database = "cl53-shad2015";
+	$servername = $config["name"];
+	$serverusername = $config["username"];
+	$serverpassword = $config["password"];
+	$database = $config["database"];
 
 	// Create connection
-	$conn = new mysqli($servername, $username, $password, $database);
+	$conn = new mysqli($servername, $serverusername, $serverpassword, $database);
 	function convertYear($year){
 		switch($year){
 			case 1 : return "First";
@@ -60,7 +61,7 @@
 <html lang="en">
 <head>
 	<title>All Profiles - Get Out!</title>
-	<link rel="shortcut icon" href="img/logo.ico">
+	<link rel="shortcut icon" img="../href/logo.ico">
 
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
 
