@@ -5,7 +5,7 @@ GetOut! is a fitness matching website designed to match people with similar phys
 
 Built using mainly PHP, Bootstrap, jQuery, and a MySQL database.
 
-#####Temporary URL: www.charliezhang.xyz/getout
+#####URL: www.charliezhang.xyz/getout
 
 ###Features
 Matching system that matches profiles with similar interests, buddy system where you can add people to your buddy list, functional messaging system, easily edit your own interests to update your matches, upload a personal profile pic.
