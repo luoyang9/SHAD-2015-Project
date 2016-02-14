@@ -1,6 +1,6 @@
 <?php
-	$config = require("../../../config.php");
 	session_start();
+	$config = require("../../../config.php");
 
 	$interests = test_input($_POST["interests"]);
 

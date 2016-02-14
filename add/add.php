@@ -1,5 +1,5 @@
 <?php
-	
+	session_start();	
 	$config = require("../../../config.php");
 	
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -70,7 +70,6 @@
 
 	if ($conn->query($data) === TRUE) {
 		move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
-		session_start();
 		$_SESSION['username'] = $username;
 		$_SESSION['name'] = $fname . " " . $lname;
 		$_SESSION['lastactivity'] = time();

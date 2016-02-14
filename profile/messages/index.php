@@ -1,6 +1,6 @@
 <?php
-	$config = require("../../../../config.php");
 	session_start();
+	$config = require("../../../../config.php");
 
 	if (!isset($_SESSION['username'])) {
 		header('Location: ../../login');

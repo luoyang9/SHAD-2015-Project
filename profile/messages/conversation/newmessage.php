@@ -1,6 +1,6 @@
 <?php
-	$config = require("../../../../../config.php");
 	session_start();
+	$config = require("../../../../../config.php");
 
 	$message = test_input($_POST["message"]);
 	$sender = test_input($_POST["sender"]);

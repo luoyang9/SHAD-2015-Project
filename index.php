@@ -1,3 +1,6 @@
+<?php
+	session_start();	
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +42,6 @@
 					<li><a id="nav-about" href="#about"><div class="glyphicon glyphicon-bookmark"></div> ABOUT</a></li>
 
 					<?php 
-						session_start();
 						if(!isset($_SESSION['username']))
 						{
 							echo '<li><a href="login"><div class="glyphicon glyphicon-log-in"></div> LOG IN</a></li><li><a href="add"><div class="glyphicon glyphicon-new-window"></div> SIGN UP</a></li>';
